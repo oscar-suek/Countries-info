@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
+        <link rel="stylesheet" href="main.css">
+        <title>Countries Information</title>
+    </head>
+    <body>
+        <div id="head-div">
+            <div id="hd1">Where in the world?</div>
+            <div id="hd2">
+                <img id="dm-img" src="icons8-moon-50.png" width="15px" height="15px" style="margin-top: 2px;">
+                <div id="dm-text">Dark Mode</div>
+            </div>
+        </div><br>
+        <hr>
+        <div id="overall-container">
+            <div id="fodder">
+                <div id="search-div">
+                    <div id="xd1"><img src="icons8-search-48.png" width="20px" height="20px" id="img1"><input type="search" name="c-search" id="c-search" placeholder="Search for a country..."></div>
+                    <div id="region-selector">
+                        <select name="region" id="region">
+                            <option value="fbr">Filter by Region</option>
+                            <option value="africa">Africa</option>
+                            <option value="america">America</option>
+                            <option value="asia">Asia</option>
+                            <option value="europe">Europe</option>
+                            <option value="oceania">Oceania</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="main-div"></div>
+        </div>
+        <div id="new-details"></div>
+        <script src="script.js"></script>
+    </body>
+</html>
