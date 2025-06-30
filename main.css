@@ -160,6 +160,7 @@ hr{
     display: flex;
     padding-left: 9px;
     margin-left: 50px;
+    cursor: hover;
 }
 
 .back-button p{
