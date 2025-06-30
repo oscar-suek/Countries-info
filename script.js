@@ -111,10 +111,6 @@ document.addEventListener('DOMContentLoaded', function(){
                                         <p class="p-det"><span class="c-det">Languages: </span> <span id="l-name"></span></p>
                                     </div>
                                 </div>
-                                <div class="bor-div"><span class="c-det">Border Countries: </span> <p class="bor-cont">${data[a.dataset.itemIndex].borders[0]}</p>
-                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[1]}</p><p class="bor-cont">${data[a.dataset.itemIndex].borders[2]}</p>
-                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[3]}</p><p class="bor-cont">${data[a.dataset.itemIndex].borders[4]}</p>
-                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[5]}</p></div>
                             </div>
                         </div>
                     `
@@ -129,6 +125,17 @@ document.addEventListener('DOMContentLoaded', function(){
                 sg = document.querySelector('#l-name').innerHTML
                 lg = sg.substr(0, sg.length - 2)
                 document.querySelector('#l-name').innerHTML = lg
+                mc1 = document.querySelectorAll('.mc1')
+                if(data[a.dataset.itemIndex].borders == 'undefined'){
+                    console.log('no borders')
+                }else{
+                    mc1.forEach(p=>{
+                        p.innerHTML += `<div class="bor-div"><span class="c-det">Border Countries: </span> <p class="bor-cont">${data[a.dataset.itemIndex].borders[0]}</p>
+                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[1]}</p><p class="bor-cont">${data[a.dataset.itemIndex].borders[2]}</p>
+                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[3]}</p><p class="bor-cont">${data[a.dataset.itemIndex].borders[4]}</p>
+                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[5]}</p></div>`
+                    })
+                }
             })
         })
     }
@@ -182,3 +189,8 @@ document.addEventListener('DOMContentLoaded', function(){
         })
     }
 })
+
+/* <div class="bor-div"><span class="c-det">Border Countries: </span> <p class="bor-cont">${data[a.dataset.itemIndex].borders[0]}</p>
+                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[1]}</p><p class="bor-cont">${data[a.dataset.itemIndex].borders[2]}</p>
+                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[3]}</p><p class="bor-cont">${data[a.dataset.itemIndex].borders[4]}</p>
+                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[5]}</p></div> */
