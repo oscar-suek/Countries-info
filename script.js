@@ -136,6 +136,12 @@ document.addEventListener('DOMContentLoaded', function(){
                                 <p class="bor-cont">${data[a.dataset.itemIndex].borders[5]}</p></div>`
                     })
                 }
+                borCont = document.querySelectorAll('.bor-cont')
+                borCont.forEach(v=>{
+                    if (v.innerHTML == 'undefined'){
+                        v.style.display = 'none'
+                    }
+                })
             })
         })
     }
