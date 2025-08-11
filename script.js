@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
+    //fetch the json data and execute the functions
     fetch('data.json')
     .then(response => response.json())
     .then(jsonData => {
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function(){
         darkMode()
     })
 
+    //fuction to show the countries
     function showCountries(){
         let output = "";
         if(data.length > 0){
@@ -25,51 +27,26 @@ document.addEventListener('DOMContentLoaded', function(){
             })
             document.querySelector('#main-div').innerHTML = output
         }
+
+        //function to filter by region
         regions = document.querySelectorAll('.region-spec')
         region = document.querySelector('#region')
         region.addEventListener('change', function(){
             console.log(region.value)
-            if(region.value == 'africa'){
-                regions.forEach(w=>{
-                    if (w.innerHTML == 'Africa'){
-                        w.parentElement.parentElement.style.display = 'block'
-                    }else{w.parentElement.parentElement.style.display = 'none'}
-                })
-            }
-            else if(region.value == 'asia'){
-                regions.forEach(w=>{
-                    if (w.innerHTML == 'Asia'){
-                        w.parentElement.parentElement.style.display = 'block'
-                    }else{w.parentElement.parentElement.style.display = 'none'}
-                })
-            }
-            else if(region.value == 'europe'){
-                regions.forEach(w=>{
-                    if (w.innerHTML == 'Europe'){
-                        w.parentElement.parentElement.style.display = 'block'
-                    }else{w.parentElement.parentElement.style.display = 'none'}
-                })
-            }
-            else if(region.value == 'america'){
-                regions.forEach(w=>{
-                    if (w.innerHTML == 'Americas'){
-                        w.parentElement.parentElement.style.display = 'block'
-                    }else{w.parentElement.parentElement.style.display = 'none'}
-                })
-            }
-            else if(region.value == 'oceania'){
-                regions.forEach(w=>{
-                    if (w.innerHTML == 'Oceania'){
-                        w.parentElement.parentElement.style.display = 'block'
-                    }else{w.parentElement.parentElement.style.display = 'none'}
-                })
-            }
-            else if(region.value == 'fbr'){
-                regions.forEach(w=>{
+            regions.forEach(w => {
+                if (region.value == w.innerHTML){
                     w.parentElement.parentElement.style.display = 'block'
-                })
-            }
+                }
+                else if (region.value == 'fbr'){
+                    w.parentElement.parentElement.style.display = 'block'
+                }
+                else{
+                    w.parentElement.parentElement.style.display = 'none'
+                }
+            })
         })
+
+        //adding the search bar functionality
         searchBar = document.querySelector('#c-search')
         countryName = document.querySelectorAll('.c-name')
         countryName.forEach(q=>{
@@ -82,6 +59,8 @@ document.addEventListener('DOMContentLoaded', function(){
             })
         })
     }
+
+    //show more country detail when a country is clicked
     function showCountryDetail(){
         ovContainer = document.querySelector('#overall-container')
         newDetails = document.querySelector('#new-details')
@@ -116,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     `
                 newDetails.innerHTML = newPage
                 goBack()
+                //adding the country language(s)
                 data[a.dataset.itemIndex].languages.forEach((g) => {
                     /* console.log(g.name) */
                     alo = []
@@ -125,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 sg = document.querySelector('#l-name').innerHTML
                 lg = sg.substr(0, sg.length - 2)
                 document.querySelector('#l-name').innerHTML = lg
+                //adding the border countries
                 mc1 = document.querySelectorAll('.mc1')
                 if(data[a.dataset.itemIndex].borders == 'undefined'){
                     console.log('no borders')
@@ -145,6 +126,8 @@ document.addEventListener('DOMContentLoaded', function(){
             })
         })
     }
+
+    //fumction to go back to the main page
     function goBack(){
         backButton = document.querySelectorAll('.back-button')
         backButton.forEach(t=>{
@@ -155,6 +138,8 @@ document.addEventListener('DOMContentLoaded', function(){
             })
         })
     }
+
+    //function to toggle between light mode and dark mode
     function darkMode(){
         modeSelector = document.querySelector('#hd2')
         moonImage = document.querySelector('#dm-img')
@@ -196,7 +181,3 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 })
 
-/* <div class="bor-div"><span class="c-det">Border Countries: </span> <p class="bor-cont">${data[a.dataset.itemIndex].borders[0]}</p>
-                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[1]}</p><p class="bor-cont">${data[a.dataset.itemIndex].borders[2]}</p>
-                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[3]}</p><p class="bor-cont">${data[a.dataset.itemIndex].borders[4]}</p>
-                                <p class="bor-cont">${data[a.dataset.itemIndex].borders[5]}</p></div> */
